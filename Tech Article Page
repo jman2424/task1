@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tech Article Page</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --soft: #f8fafc;
+      --accent: #2563eb;
+      --max: 1200px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    .page {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 340px;
+      gap: 40px;
+    }
+
+    .article-shell {
+      min-width: 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    .title {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      font-weight: 800;
+      margin: 0 0 14px;
+      max-width: 900px;
+    }
+
+    .subtitle {
+      font-size: 1.15rem;
+      color: var(--muted);
+      margin: 0 0 24px;
+      max-width: 760px;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 0.95rem;
+      color: var(--muted);
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 28px;
+    }
+
+    .hero {
+      width: 100%;
+      min-height: 340px;
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.14), transparent 24%),
+        radial-gradient(circle at 80% 30%, rgba(17, 24, 39, 0.08), transparent 24%),
+        linear-gradient(135deg, #f8fafc, #eef2ff 55%, #f8fafc);
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .hero-label {
+      max-width: 520px;
+    }
+
+    .hero-label strong {
+      display: block;
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+
+    .article {
+      max-width: 760px;
+    }
+
+    .article p {
+      font-size: 1.08rem;
+      margin: 0 0 20px;
+      color: #1f2937;
+    }
+
+    .article h2 {
+      margin: 38px 0 14px;
+      font-size: 1.55rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .quote {
+      border-left: 4px solid var(--accent);
+      padding: 6px 0 6px 18px;
+      margin: 28px 0;
+      font-size: 1.2rem;
+      color: #0f172a;
+      font-weight: 600;
+    }
+
+    .editor {
+      position: sticky;
+      top: 20px;
+      align-self: start;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    .editor h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+    }
+
+    .editor p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .field {
+      margin-bottom: 12px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #374151;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    input, textarea {
+      width: 100%;
+      border: 1px solid #d1d5db;
+      border-radius: 14px;
+      padding: 12px 14px;
+      font: inherit;
+      background: #fff;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 210px;
+    }
+
+    .hint {
+      margin-top: 10px;
+      padding: 12px 14px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      font-size: 0.88rem;
+      color: #475569;
+    }
+
+    .footer-space {
+      height: 30px;
+    }
+
+    @media (max-width: 980px) {
+      .page {
+        grid-template-columns: 1fr;
+      }
+
+      .editor {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <main class="article-shell">
+      <div class="eyebrow" id="category">Tech News</div>
+      <h1 class="title" id="title">The Next Big Shift in Consumer Technology Is Already Here</h1>
+      <p class="subtitle" id="subtitle">A clean article layout designed to feel like a real modern tech publication, ready for your own content.</p>
+
+      <div class="meta">
+        <span id="author">By Alex Carter</span>
+        <span id="date">March 18, 2026</span>
+        <span>7 min read</span>
+      </div>
+
+      <section class="hero">
+        <div class="hero-label">
+          <strong>Featured Article Layout</strong>
+          <span>This area acts like a premium cover image block for your tech story.</span>
+        </div>
+      </section>
+
+      <article class="article" id="articleOutput">
+        <p>Paste your article text into the panel on the right and it will appear here in a clean, readable format.</p>
+        <p>This layout uses a white background, strong headline spacing, modern typography, and a magazine-style content width so it looks like a real tech article page.</p>
+        <h2>Why this layout works</h2>
+        <p>Good tech articles are easy to scan. A strong headline, short subtitle, author line, and large feature area make the page feel credible and polished.</p>
+        <div class="quote">“A clean layout makes even rough draft content feel more professional.”</div>
+        <p>You can replace everything on this page with your own story, product review, startup news, AI article, or blog content.</p>
+      </article>
+      <div class="footer-space"></div>
+    </main>
+
+    <aside class="editor">
+      <h3>Article Editor</h3>
+      <p>Paste your content here and update the title, subtitle, author, and category.</p>
+
+      <div class="field">
+        <label for="categoryInput">Category</label>
+        <input id="categoryInput" value="Tech News" />
+      </div>
+
+      <div class="field">
+        <label for="titleInput">Title</label>
+        <input id="titleInput" value="The Next Big Shift in Consumer Technology Is Already Here" />
+      </div>
+
+      <div class="field">
+        <label for="subtitleInput">Subtitle</label>
+        <input id="subtitleInput" value="A clean article layout designed to feel like a real modern tech publication, ready for your own content." />
+      </div>
+
+      <div class="field">
+        <label for="authorInput">Author</label>
+        <input id="authorInput" value="By Alex Carter" />
+      </div>
+
+      <div class="field">
+        <label for="dateInput">Date</label>
+        <input id="dateInput" value="March 18, 2026" />
+      </div>
+
+      <div class="field">
+        <label for="bodyInput">Paste Article Text</label>
+        <textarea id="bodyInput" placeholder="Paste your article text here. Use a blank line between paragraphs."></textarea>
+      </div>
+
+      <div class="hint">
+        Tip: Leave a blank line between paragraphs. To create a section heading, start a line with <strong>##</strong> like this: <strong>## New Section</strong>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    const category = document.getElementById('category');
+    const title = document.getElementById('title');
+    const subtitle = document.getElementById('subtitle');
+    const author = document.getElementById('author');
+    const date = document.getElementById('date');
+    const articleOutput = document.getElementById('articleOutput');
+
+    const categoryInput = document.getElementById('categoryInput');
+    const titleInput = document.getElementById('titleInput');
+    const subtitleInput = document.getElementById('subtitleInput');
+    const authorInput = document.getElementById('authorInput');
+    const dateInput = document.getElementById('dateInput');
+    const bodyInput = document.getElementById('bodyInput');
+
+    function escapeHtml(text) {
+      return text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function renderBody(text) {
+      if (!text.trim()) return;
+
+      const blocks = text.trim().split(/\n\s*\n/);
+      const html = blocks.map(block => {
+        const trimmed = block.trim();
+
+        if (trimmed.startsWith('##')) {
+          return `<h2>${escapeHtml(trimmed.replace(/^##\s*/, ''))}</h2>`;
+        }
+
+        if (trimmed.startsWith('>>')) {
+          return `<div class="quote">${escapeHtml(trimmed.replace(/^>>\s*/, ''))}</div>`;
+        }
+
+        return `<p>${escapeHtml(trimmed).replace(/\n/g, '<br>')}</p>`;
+      }).join('');
+
+      articleOutput.innerHTML = html;
+    }
+
+    categoryInput.addEventListener('input', () => category.textContent = categoryInput.value || 'Tech News');
+    titleInput.addEventListener('input', () => title.textContent = titleInput.value || 'Your Article Title');
+    subtitleInput.addEventListener('input', () => subtitle.textContent = subtitleInput.value || 'Your article subtitle goes here.');
+    authorInput.addEventListener('input', () => author.textContent = authorInput.value || 'By Your Name');
+    dateInput.addEventListener('input', () => date.textContent = dateInput.value || 'Today');
+    bodyInput.addEventListener('input', () => renderBody(bodyInput.value));
+  </script>
+</body>
+</html>
